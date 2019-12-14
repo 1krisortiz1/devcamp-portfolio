@@ -1,7 +1,10 @@
 class PortfoliosController < ApplicationController
     def index
-        @portfolio_items = Portfolio.all
+        @angular_portfolio_items = Portfolio.all
+    end
 
+    def angular
+        @angular_portfolio_items = Portfolio.angular
     end
 
     def new
@@ -13,7 +16,7 @@ class PortfoliosController < ApplicationController
 
         respond_to do |format|
             if @portfolio_item.save
-                format.html { redirect_to portfolios_path, notice: 'Your ortfolio item is now livewas successfully created.' }
+                format.html { redirect_to portfolios_path, notice: 'Your Portfolio item is now live.' }
             else
                 format.html { render :new }
             end
